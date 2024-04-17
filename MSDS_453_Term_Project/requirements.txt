@@ -11,3 +11,5 @@ polyglot
 pynlpi
 torch
 transformers
+
+# Note: This list was created with the assistance of Perplexity.ai using the Claud 3 model.

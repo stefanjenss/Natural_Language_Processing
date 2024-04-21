@@ -1,15 +1,16 @@
 # Useful packages for NLP that should be installed to the environment running the code in this repository.
+pandas
+numpy
+regex
 nltk
 spacy
 gensim
 scikit-learn
-pandas
-numpy
 textblob
 pattern
 polyglot
-pynlpi
 torch
 transformers
+
 
 # Note: This list was created with the assistance of Perplexity.ai using the Claud 3 model.

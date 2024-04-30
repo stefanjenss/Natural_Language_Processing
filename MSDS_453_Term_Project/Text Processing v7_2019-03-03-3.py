@@ -151,10 +151,12 @@ matrix=pd.DataFrame(TFIDF_matrix.toarray(), columns=Tfidf.get_feature_names_out(
 ### Explore TFIDF Values
 ###############################################################################
 
+# calculate the average TFIDF value for each word
 average_TFIDF={}
 for i in matrix.columns:
     average_TFIDF[i]=np.mean(matrix[i])
-
+    
+# create a dataframe to store the average TFIDF values
 average_TFIDF_DF=pd.DataFrame(average_TFIDF,index=[0]).transpose()
 
 average_TFIDF_DF.columns=['TFIDF']
@@ -284,13 +286,20 @@ for i in range(k):
 # "precomputed" because we provide a distance matrix
 # we will also specify `random_state` so the plot is reproducible.
 
+# MDS is used to reduce the dimensions of the TFIDF matrix to 2 dimensions
+# for plotting purposes.  The cosine similarity is used to calculate the distance
+# between each document.  The distance matrix is then used to plot the documents
+# in 2 dimensions.  The clusters are then plotted in different colors.
+# The cluster names are also displayed in the legend.
+mds = MDS(n_components=2, dissimilarity="precomputed", random_state=1) # Use MDS to reduce dimensions
 
-mds = MDS(n_components=2, dissimilarity="precomputed", random_state=1)
-
+# calculate the distance matrix
 dist = 1 - cosine_similarity(TFIDF_matrix)
 
+# reduce the dimensions of the distance matrix to 2 dimensions
 pos = mds.fit_transform(dist)  # shape (n_components, n_samples)
 
+# separate the x and y coordinates
 xs, ys = pos[:, 0], pos[:, 1]
 
 

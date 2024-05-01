@@ -504,3 +504,14 @@ ldamodel = LdaMulticore(corpus_tfidf, num_topics=3, id2word=dictionary, passes=2
 for idx, topic in ldamodel.print_topics(-1):
     print('Topic: {} \nWords: {}'.format(idx, topic))
 
+"""
+Golf realted words:
+- course
+- play
+- hole
+- green
+- par
+- tee
+- yard
+- golf
+"""
